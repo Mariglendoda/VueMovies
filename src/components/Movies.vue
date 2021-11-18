@@ -32,7 +32,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import env from "@/env";
+import env from "../env";
 
 export default {
   setup() {
@@ -40,7 +40,7 @@ export default {
     const movies = ref([]);
     const SearchMovies = () => {
       if (search.value !== "") {
-        fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+        fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
           .then((response) => response.json())
           .then((data) => {
             movies.value = data.Search;
@@ -49,7 +49,7 @@ export default {
     };
 
     onMounted(() => {
-      fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=all`)
+      fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&s=all`)
         .then((response) => response.json())
         .then((data) => {
           movies.value = data.Search;
